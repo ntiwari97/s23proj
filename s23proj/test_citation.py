@@ -41,22 +41,25 @@ file = {Full Text:/home/nick/Zotero/storage/HCTQZ6R2/Kitchin - 2015 - Examples o
 # Arrange
 @pytest.fixture
 def work_ris():
-    work = Works('https://doi.org/10.1021/acscatal.5b00538')
-    return  work.ris.split('\n')[1]
+    work = Works("https://doi.org/10.1021/acscatal.5b00538")
+    return work.ris.split("\n")[1]
+
 
 @pytest.fixture
 def work_bibtex():
-    work = Works('https://doi.org/10.1021/acscatal.5b00538')
-    return  work.bibtex.split('\n')[1]
+    work = Works("https://doi.org/10.1021/acscatal.5b00538")
+    return work.bibtex.split("\n")[1]
+
 
 def test_work_ris(work_ris):
-    auth_reference = ris.split('\n')[1]
+    auth_reference = ris.split("\n")[1]
 
     # Assert
     assert work_ris == auth_reference
 
+
 def test_work_bibtex(work_bibtex):
-    auth_reference = bibtex.split('\n')[10]
+    auth_reference = bibtex.split("\n")[10]
 
     # Assert
     assert work_bibtex == auth_reference

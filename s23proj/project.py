@@ -109,7 +109,16 @@ class Works:
         else:
             raise Exception("Unsupported type {self.data['type']}")
 
-        fields += ["author   = {" + ','.join([author['author']['display_name'] for author in self.data['authorships']]) + '}']
+        fields += [
+            "author   = {"
+            + ",".join(
+                [
+                    author["author"]["display_name"]
+                    for author in self.data["authorships"]
+                ]
+            )
+            + "}"
+        ]
         fields += [f"title   = {{{self.data['title']}}}"]
         fields += [f"journal = {{{self.data['host_venue']['display_name']}}}"]
         fields += [f"volume  = {{{self.data['biblio']['volume']}}}"]
@@ -121,4 +130,3 @@ class Works:
         bibtex = "\n".join(fields)
 
         return bibtex
-
